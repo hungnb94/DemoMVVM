@@ -1,10 +1,9 @@
 package com.solar.hungnb.demomvvm
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
 
-class CountViewModel constructor(application: Application) : AndroidViewModel(application) {
+class CountViewModel: ViewModel() {
 
     var count: MutableLiveData<Int> = MutableLiveData()
 

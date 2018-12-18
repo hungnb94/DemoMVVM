@@ -1,6 +1,7 @@
 package com.solar.hungnb.demomvvm
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -14,6 +15,7 @@ import com.solar.hungnb.demomvvm.databinding.FragmentCountBinding
 class CountFragment : Fragment() {
     private val TAG = CountFragment::class.java.simpleName
     lateinit var viewModel: CountViewModel
+    private var listener: View.OnClickListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +31,19 @@ class CountFragment : Fragment() {
 
         binding.btnAdd.setOnClickListener { increase() }
         binding.btnSub.setOnClickListener { decrease() }
-        binding.btnNextFragment.setOnClickListener { nextFragment() }
+        binding.btnNextFragment.setOnClickListener(listener)
 
         return binding.root
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        if(context is View.OnClickListener) listener = context
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
     }
 
 
