@@ -21,6 +21,10 @@ class ShowValueFragment : Fragment() {
         Log.e(TAG, "${viewModel.count.value}")
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<FragmentShowValueBinding>(inflater, R.layout.fragment_show_value, container, false)
